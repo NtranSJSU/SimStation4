@@ -102,48 +102,48 @@ public abstract class Agent implements Serializable, Runnable {
     
     public synchronized void move(int steps) {
 		switch(heading) {
-			case Heading.NORTH:{
+			case NORTH:{
 				ycoord -= steps;
 				if (ycoord < 0) { ycoord += 250; }
 				break;
 			}
-			case Heading.SOUTH:{
+			case SOUTH:{
 				ycoord += steps;
 				if (ycoord > 250) { ycoord -= 250; }
 				break;
 			}
-			case Heading.EAST: {
+			case EAST: {
 				xcoord += steps;
 				if (xcoord > 250) { xcoord -= 250; }
 				break;
 			}
-			case Heading.WEST:{
+			case WEST:{
 				xcoord -= steps;
 				if (xcoord < 0) { xcoord += 250; }
 				break;
 			}
-			case Heading.NORTHWEST:{
+			case NORTHWEST:{
 				ycoord -= steps;
 				xcoord -= steps;
 				if (ycoord < 0) { ycoord += 250; }
 				if (xcoord < 0) { xcoord += 250; }
 				break;
 			}
-			case Heading.NORTHEAST:{
+			case NORTHEAST:{
 				ycoord -= steps;
 				xcoord += steps;
 				if(ycoord < 0) { ycoord += 250; }
 				if (xcoord > 250) { xcoord -= 250; }
 				break;
 			}
-			case Heading.SOUTHWEST:{
+			case SOUTHWEST:{
 				ycoord += steps;
 				xcoord -= steps;
 				if (ycoord > 250) { ycoord -= 250; }
 				if (xcoord < 0) { xcoord += 250; }
 				break;
 			}
-			case Heading.SOUTHEAST:{
+			case SOUTHEAST:{
 				ycoord += steps;
 				xcoord += steps;
 				if (ycoord > 250) { ycoord -= 250; }
