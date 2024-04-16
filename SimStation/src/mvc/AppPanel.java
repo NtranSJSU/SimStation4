@@ -1,9 +1,5 @@
 package mvc;
 
-import CALab.GridFactory;
-import CALab.GridPanel;
-import life.LifeFactory;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -47,18 +43,21 @@ public class AppPanel extends JPanel implements Subscriber, ActionListener {
         model = factory.makeModel();
         view = factory.makeView(model);
         view.setBackground((Color.GRAY));
+
         controlPanel = new JPanel();
         controlPanel.setBackground((Color.PINK));
         setLayout(new GridLayout(1,2));
         add(controlPanel);
         add(view);
+
         model.subscribe(this);
 
         frame = new SafeFrame();
         Container cp = frame.getContentPane();
         cp.add(this);
         frame.setJMenuBar(this.createMenuBar());
-        frame.setSize(500, 300);
+        frame.setTitle(factory.getTitle());
+        frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
     }
 
     public void actionPerformed(ActionEvent ae){

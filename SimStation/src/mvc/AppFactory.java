@@ -1,8 +1,5 @@
 package mvc;
 
-import CALab.GridPanel;
-import life.LifeFactory;
-
 import java.util.*;
 
 public interface AppFactory {

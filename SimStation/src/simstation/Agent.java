@@ -1,4 +1,4 @@
-package SimStation;
+package simstation;
 
 import java.io.Serializable;
 
@@ -20,16 +20,16 @@ public abstract class Agent implements Serializable, Runnable {
     protected boolean interrupted = false;
     protected boolean stopped = false;
     transient protected Thread currentThread;
-    //protected Simulation world;
+    protected Simulation world;
 
     public Agent(){
         xcoord = Utilities.rng.nextInt(250);
         ycoord = Utilities.rng.nextInt(250);
     }
 
-    //public void setWorld(Simulation s){
-    //    world = s;
-    //}
+    public void setWorld(Simulation s){
+       world = s;
+    }
     
     public int getX(){
         return xcoord;
@@ -151,7 +151,7 @@ public abstract class Agent implements Serializable, Runnable {
 				break;
 			}
 		}
-		//world.changed();
+		world.changed();
 	}
 
     public synchronized void draw (Graphics gc) {
