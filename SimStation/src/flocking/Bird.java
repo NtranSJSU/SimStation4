@@ -1,32 +1,44 @@
 package SimStation.flocking;
 
 import SimStation.Agent;
-import SimStation.Heading;
 import SimStation.Simulation;
+import SimStation.SimulationPanel;
+import mvc.AppPanel;
 import mvc.Utilities;
 
-public class Bird extends Agent {
-    public int speed;
+public class FlockingSimulation extends Simulation {
 
-    public Bird() {
-        super();
-        heading = Heading.random();
-        speed = Utilities.rng.nextInt(10);
+    public void populate() {
+        for (int i = 0; i < 15; i++) {
+            addAgent(new Bird());
+        }
     }
 
     @Override
-    public void update() {
-        Simulation world = getWorld();
-        Agent neighbor = world.getNeighbor(this, 10);
-        if (neighbor != null) {
-            Bird b = (Bird) neighbor;
-            int steps = b.speed;
-            heading = b.heading;
-            speed = b.speed;
-            move(steps);
+    public void statistic() {
+        int s1, s2, s3, s4, s5;
+        s1 = s2 = s3 = s4 = s5 = 0;
+        for (int i = 0; i < agents.size(); i++) {
+            Agent agent = agents.get(i);
+            Bird bird = (Bird) agent;
+            if (bird.speed == 1) s1++;
+            if (bird.speed == 2) s2++;
+            if (bird.speed == 3) s3++;
+            if (bird.speed == 4) s4++;
+            if (bird.speed == 5) s5++;
         }
-        else {
-            move(speed);
-        }
+        String[] birdSpeed = {
+                "#birds @ speed 1 = " + s1,
+                "#birds @ speed 2 = " + s2,
+                "#birds @ speed 3 = " + s3,
+                "#birds @ speed 4 = " + s4,
+                "#birds @ speed 5 = " + s5
+        };
+        Utilities.inform(birdSpeed);
+    }
+
+    public static void main(String[] args) {
+        AppPanel panel = new SimulationPanel(new FlockingFactory());
+        panel.display();
     }
 }
