@@ -11,7 +11,7 @@ public class Bird extends Agent {
     public Bird() {
         super();
         heading = Heading.random();
-        speed = Utilities.rng.nextInt(5);
+        speed = Utilities.rng.nextInt(5) + 1;
     }
 
     @Override
