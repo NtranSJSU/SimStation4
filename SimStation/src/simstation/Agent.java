@@ -58,19 +58,10 @@ public abstract class Agent implements Serializable, Runnable {
         }
     }
 
-    public synchronized void join() {
-        try{
-            if(currentThread != null) {
-                currentThread.join();
-            }
-        } catch(InterruptedException e) {
-            Utilities.error(e);
-        }
-    }
-
     @Override
     public void run() {
         currentThread = Thread.currentThread();
+        checkSuspended();
         while ( !isStopped()){
             try {
                 update();
@@ -153,6 +144,15 @@ public abstract class Agent implements Serializable, Runnable {
 		}
 		world.changed();
 	}
+    public synchronized void join() {
+        try{
+            if(currentThread != null) {
+                currentThread.join();
+            }
+        } catch(InterruptedException e) {
+            Utilities.error(e);
+        }
+    }
 
     public synchronized void draw (Graphics gc) {
 		gc.setColor(Color.white);

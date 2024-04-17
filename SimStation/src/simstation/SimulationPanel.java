@@ -2,20 +2,19 @@ package simstation;
 
 import mvc.AppFactory;
 import mvc.AppPanel;
+import mvc.Model;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Iterator;
+
 /*
 Date: 4/15/2024
 Name: Nhat Tran
 Update: Fixed Panel to show buttons in a straight column
  */
 public class SimulationPanel extends AppPanel {
-    private JButton start;
-    private JButton suspend;
-    private JButton resume;
-    private JButton stop;
-    private JButton stats;
+    private JButton start, suspend, resume, stop, stats;
 
     public SimulationPanel(AppFactory factory) {
         super(factory);
@@ -51,6 +50,16 @@ public class SimulationPanel extends AppPanel {
         stats.addActionListener(this);
         statsPanel.add(stats);
         controlPanel.add(statsPanel);
+    }
+
+    public void setModel(Model m) {
+        super.setModel(m); // calling AppPanel.setModel(m)
+        Simulation s = (Simulation)m;
+        Iterator<Agent> it = s.agents.iterator();
+        while(it.hasNext()) {
+            Thread t = new Thread(it.next());
+            t.start(); // this will call Agent.run (see below)
+        }
     }
 
 }
