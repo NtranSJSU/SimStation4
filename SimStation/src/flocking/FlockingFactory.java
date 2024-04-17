@@ -1,4 +1,4 @@
-package simstation.flocking;
+package flocking;
 
 import simstation.SimulationFactory;
 import mvc.Model;
@@ -13,4 +13,6 @@ public class FlockingFactory extends SimulationFactory {
     public String getTitle() { //go to line 50
         return "Flocking Simulator";
     }
+
+    public String about() { return "Flocking Simulator "; }
 }

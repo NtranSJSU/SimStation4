@@ -1,4 +1,4 @@
-package simstation.flocking;
+package flocking;
 
 import simstation.Agent;
 import simstation.Simulation;
@@ -28,6 +28,8 @@ public class FlockingSimulation extends Simulation {
             if (bird.speed == 5) s5++;
         }
         String[] birdSpeed = {
+                "Number of Agents = " + agents.size(),
+                "Timer = " + time,
                 "#birds @ speed 1 = " + s1,
                 "#birds @ speed 2 = " + s2,
                 "#birds @ speed 3 = " + s3,

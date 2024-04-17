@@ -1,4 +1,4 @@
-package simstation.flocking;
+package flocking;
 
 import simstation.Agent;
 import simstation.Heading;
@@ -16,10 +16,8 @@ public class Bird extends Agent {
 
     @Override
     public void update() {
-        Simulation world = getWorld();
-        Agent neighbor = world.getNeighbor(this, 15);
-        if (neighbor != null) {
-            Bird b = (Bird) neighbor;
+        Bird b = (Bird) world.getNeighbor(this, 15);
+        if (b != null) {
             int steps = b.speed;
             heading = b.heading;
             speed = b.speed;
