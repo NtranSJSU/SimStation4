@@ -3,10 +3,9 @@
 package plague;
 
 import mvc.AppPanel;
-import plague.PlagueFactory;
+import mvc.Utilities;
 import simstation.Agent;
 import simstation.Simulation;
-import mvc.Utilities;
 import simstation.SimulationPanel;
 
 public class PlagueSimulation extends Simulation {
@@ -20,27 +19,8 @@ public class PlagueSimulation extends Simulation {
             addAgent(new PlagueAgent());
     }
 
-    public void simulate() {
-        while (true) {
-            // Update agents
-            for (Agent agent : getAgents()) {
-                PlagueAgent plagueAgent = (PlagueAgent) agent;
-                plagueAgent.update();
-            }
 
-            // Calculate and display statistics
-            calculateAndDisplayStats();
-
-            // Sleep for a while to slow down the simulation
-            try {
-                Thread.sleep(1000); // Sleep for 1 second
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public void calculateAndDisplayStats() {
+    public void statistic() {
         // Calculate statistics
         int infectedCount = 0;
         for (Agent agent : getAgents()) {
