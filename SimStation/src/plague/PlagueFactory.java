@@ -14,5 +14,5 @@ public class PlagueFactory extends SimulationFactory {
         return "Plague Simulator";
     }
 
-    public String about() { return "Plague Simulator "; }
+    public String about() { return "Plague Simulator made by Max Zlochevsky"; }
 }

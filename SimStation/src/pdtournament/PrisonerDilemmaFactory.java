@@ -17,6 +17,6 @@ public class PrisonerDilemmaFactory extends SimulationFactory {
     }
 
     public String about(){
-        return "Prisoner's Dilemma Tournament Simulation";
+        return "Prisoner's Dilemma Tournament Simulation made by Nhat Tran";
     }
 }

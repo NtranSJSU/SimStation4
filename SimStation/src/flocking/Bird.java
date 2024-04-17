@@ -16,7 +16,7 @@ public class Bird extends Agent {
 
     @Override
     public void update() {
-        Bird b = (Bird) world.getNeighbor(this, 15);
+        Bird b = (Bird) world.getNeighbor(this, 20);
         if (b != null) {
             int steps = b.speed;
             heading = b.heading;

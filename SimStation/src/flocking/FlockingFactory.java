@@ -14,5 +14,5 @@ public class FlockingFactory extends SimulationFactory {
         return "Flocking Simulator";
     }
 
-    public String about() { return "Flocking Simulator "; }
+    public String about() { return "Flocking Simulator made by Rayhann Kwon"; }
 }

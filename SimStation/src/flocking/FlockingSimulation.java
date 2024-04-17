@@ -15,7 +15,7 @@ public class FlockingSimulation extends Simulation {
     }
 
     @Override
-    public void statistic() {
+    public void getStats() {
         int s1, s2, s3, s4, s5;
         s1 = s2 = s3 = s4 = s5 = 0;
         for (int i = 0; i < agents.size(); i++) {
@@ -28,8 +28,8 @@ public class FlockingSimulation extends Simulation {
             if (bird.speed == 5) s5++;
         }
         String[] birdSpeed = {
-                "Number of Agents = " + agents.size(),
-                "Timer = " + time,
+                "#agents = " + agents.size(),
+                "clock = " + time,
                 "#birds @ speed 1 = " + s1,
                 "#birds @ speed 2 = " + s2,
                 "#birds @ speed 3 = " + s3,

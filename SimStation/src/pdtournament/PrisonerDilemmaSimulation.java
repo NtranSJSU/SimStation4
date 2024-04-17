@@ -21,7 +21,7 @@ public class PrisonerDilemmaSimulation extends Simulation {
     }
 
     @Override
-    public void statistic(){
+    public void getStats(){
         int avgCoop = 0;
         int avgCheat = 0;
         int avgRandCoop = 0;
@@ -43,8 +43,8 @@ public class PrisonerDilemmaSimulation extends Simulation {
         }
 
         String[] stats = {
-                "Number of Agents = " + agents.size(),
-                "Timer = " + time,
+                "#agents = " + agents.size(),
+                "clock = " + time,
                 "Average Cooperage = " + String.format("%.2f", (double)avgCoop/agents.size()/4),
                 "Average Cheat = " + String.format("%.2f", (double)avgCheat/agents.size()/4),
                 "Average Randomly Cooperate = " + String.format("%.2f", (double)avgRandCoop/agents.size()/4),

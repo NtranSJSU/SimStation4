@@ -121,7 +121,7 @@ public class Simulation extends Model {
         return null;
     }
 
-    public void statistic() {
+    public void getStats() {
         Utilities.inform(new String[] {"Number of Agents: " + agents.size(), "Timer: " + time});
     }
 }

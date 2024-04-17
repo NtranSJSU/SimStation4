@@ -23,7 +23,7 @@ public class PlagueSimulation extends Simulation {
     }
 
 
-    public void statistic() {
+    public void getStats() {
         // Calculate statistics
         int infectedCount = 0;
         for (Agent agent : getAgents()) {
@@ -36,9 +36,9 @@ public class PlagueSimulation extends Simulation {
 
         // Display statistics
         String[] stats = {
-                "Number of agents = " + getAgents().size(),
-                "Timer = " + time,
-                "Percent infected = " + percentInfected + "%"};
+                "#agents = " + getAgents().size(),
+                "clock = " + time,
+                "% infected = " + percentInfected};
         Utilities.inform(stats);
     }
 

@@ -14,6 +14,6 @@ public class StatsCommand extends Command{
 
     @Override
     public void execute() {
-        ((Simulation)model).statistic();
+        ((Simulation)model).getStats();
     }
 }
