@@ -3,6 +3,7 @@ package plague;
 import simstation.Agent;
 import simstation.Heading;
 import java.awt.Color;
+import java.awt.Graphics;
 import mvc.Utilities;
 
 public class PlagueAgent extends Agent {
@@ -45,14 +46,18 @@ public class PlagueAgent extends Agent {
 
         // Set color based on infection status
         if (infected) {
+            // Set the color to red if infected
             color = Color.RED;
         } else {
+            // Set the color to green if not infected
             color = Color.GREEN;
         }
     }
 
-    // Add a method to get the color
-    public Color getColor() {
-        return color;
+    @Override
+    public void draw(Graphics g) {
+        // Set the color of the agent's shape or representation
+        g.setColor(color);
+        super.draw(g); // Call the superclass method to draw the agent
     }
 }
