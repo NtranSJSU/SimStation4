@@ -1,15 +1,11 @@
-// PlagueAgent.java
-
 package plague;
 
 import simstation.Agent;
-import simstation.Heading;
-
-import java.awt.Color; // Import the Color class
+import java.awt.Color;
 
 public class PlagueAgent extends Agent {
     private boolean infected;
-    private Color color; // Declare the color variable
+    private Color color;  // Define the color attribute
 
     public PlagueAgent() {
         super();
@@ -41,9 +37,9 @@ public class PlagueAgent extends Agent {
 
         // Set color based on infection status
         if (infected) {
-            color = Color.RED; // Use java.awt.Color.RED
+            color = Color.RED;
         } else {
-            color = Color.GREEN; // Use java.awt.Color.GREEN
+            color = Color.GREEN;
         }
     }
 
