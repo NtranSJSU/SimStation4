@@ -1,8 +1,8 @@
-package SimStation.flocking;
+package simstation.flocking;
 
-import SimStation.Agent;
-import SimStation.Simulation;
-import SimStation.SimulationPanel;
+import simstation.Agent;
+import simstation.Simulation;
+import simstation.SimulationPanel;
 import mvc.AppPanel;
 import mvc.Utilities;
 
