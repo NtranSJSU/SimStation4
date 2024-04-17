@@ -20,6 +20,7 @@ public class PrisonerDilemmaSimulation extends Simulation {
         }
     }
 
+    @Override
     public void statistic(){
         int avgCoop = 0;
         int avgCheat = 0;
@@ -41,14 +42,15 @@ public class PrisonerDilemmaSimulation extends Simulation {
             }
         }
 
-        Utilities.inform(new String[]{
-                    "Number of Agents = " + agents.size(),
-                    "Timer = " + time,
-                    "Average Cooperage = " + String.format("%.2f", (double)avgCoop/agents.size()/4),
-                    "Average Cheat = " + String.format("%.2f", (double)avgCheat/agents.size()/4),
-                    "Average Randomly Cooperate = " + String.format("%.2f", (double)avgRandCoop/agents.size()/4),
-                    "Average Tit 4 Tat = " + String.format("%.2f", (double)avgTit4Tat/agents.size()/4)
-        });
+        String[] stats = {
+                "Number of Agents = " + agents.size(),
+                "Timer = " + time,
+                "Average Cooperage = " + String.format("%.2f", (double)avgCoop/agents.size()/4),
+                "Average Cheat = " + String.format("%.2f", (double)avgCheat/agents.size()/4),
+                "Average Randomly Cooperate = " + String.format("%.2f", (double)avgRandCoop/agents.size()/4),
+                "Average Tit 4 Tat = " + String.format("%.2f", (double)avgTit4Tat/agents.size()/4)
+        };
+        Utilities.inform(stats);
 
     }
 

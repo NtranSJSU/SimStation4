@@ -9,7 +9,7 @@ import mvc.Utilities;
 public class FlockingSimulation extends Simulation {
 
     public void populate() {
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 30; i++) {
             addAgent(new Bird());
         }
     }

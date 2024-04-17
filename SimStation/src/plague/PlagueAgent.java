@@ -8,14 +8,14 @@ import mvc.Utilities;
 
 public class PlagueAgent extends Agent {
     private boolean infected;
-    private Color color;  // Define the color attribute
-    private int speed;
+    private final int VIRULENCE;
+    private final int RESISTANCE;
 
-    public PlagueAgent() {
+    public PlagueAgent(int virulence, int resistance) {
         super();
-        infected = false;
-        heading = Heading.random(); // Set a random heading
-        speed = Utilities.rng.nextInt(5) + 1; // Set a random speed between 1 and 5
+        VIRULENCE = virulence;
+        RESISTANCE = resistance;
+        infected = (Utilities.rng.nextInt(100) < virulence && Utilities.rng.nextInt(100) > resistance);
     }
 
     public boolean isInfected() {
@@ -28,36 +28,30 @@ public class PlagueAgent extends Agent {
 
     @Override
     public void update() {
+
         // Move the agent according to its speed and heading
-        move(speed);
+        heading = Heading.random();
+        int step = Utilities.rng.nextInt(5) + 1;
+        move(step);
 
         if (!infected) {
-            // If the agent is not infected, check for nearby infected agents
-            for (Agent neighbor : world.getAgents()) {
-                if (neighbor != this && ((PlagueAgent) neighbor).isInfected()) {
-                    // Determine if this agent gets infected based on VIRULENCE
-                    if (PlagueSimulation.VIRULENCE >= Math.random() * 100) {
-                        infected = true;
-                        break;
-                    }
-                }
-            }
+            return;
         }
 
-        // Set color based on infection status
-        if (infected) {
-            // Set the color to red if infected
-            color = Color.RED;
-        } else {
-            // Set the color to green if not infected
-            color = Color.GREEN;
+        PlagueAgent neighbor = (PlagueAgent) world.getNeighbor(this, 8);
+        if (neighbor != null && !neighbor.isInfected()){
+            neighbor.infect(VIRULENCE);
         }
+    }
+
+    private void infect(int virulence){
+        infected = (Utilities.rng.nextInt(100) < virulence && Utilities.rng.nextInt(100) > RESISTANCE);
     }
 
     @Override
     public void draw(Graphics g) {
         // Set the color of the agent's shape or representation
-        g.setColor(color);
-        super.draw(g); // Call the superclass method to draw the agent
+        g.setColor((infected) ? Color.RED : Color.GREEN);
+        g.drawRect(xcoord, ycoord, 2, 2); // Call the superclass method to draw the agent
     }
 }
